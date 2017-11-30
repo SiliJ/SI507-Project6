@@ -131,11 +131,11 @@ print(MID)
 arID=state_ID_returned[1]
 print(arID)
 
-# cur.execute("SELECT Sites.Name FROM Sites INNER JOIN States ON Sites.State_ID=States.ID WHERE States.ID={}.format(MID)")
-# michigan_names=cur.fetchall()
-# print(michigan_names)
+cur.execute("SELECT Sites.Name FROM Sites INNER JOIN States ON Sites.State_ID=States.ID WHERE States.ID=%s",(MID,))
+michigan_names=cur.fetchall()
+print(michigan_names)
 
-cur.execute("SELECT COUNT(Name) FROM Sites where Sites.State_ID=arID")
+cur.execute("SELECT COUNT(Name) FROM Sites where Sites.State_ID=%s", (arID,))
 total_number_arkansas=cur.fetchall()
 print (total_number_arkansas)
 cur.close()
